@@ -8,6 +8,7 @@
     "deploy": "gh-pages -d public",
     "build": "NODE_ENV=production webpack -p --progress;",
     "watch": "webpack-dev-server --watch",
+    "prebuild": "node index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u"
@@ -27,6 +28,7 @@
     "babel-plugin-dynamic-import-webpack": "1.0.1",
     "babel-plugin-transform-decorators-legacy": "1.3.4",
     "babel-register": "6.24.1",
+    "bluebird": "^3.5.1",
     "clean-webpack-plugin": "^0.1.19",
     "express": "^4.16.3",
     "prop-types": "15.5.10",

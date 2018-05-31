@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../style/styles'
+import { Title } from '../style/styles';
 
 const App = () => (
   <div>
