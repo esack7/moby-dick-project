@@ -18,4 +18,8 @@ const Title = styled.h1`
   font-family: 'Permanent marker', cursive;
 `;
 
-export { BaseStyles, AppContain, Title };
+const Item = styled.div`
+  color: white;
+`
+
+export { BaseStyles, AppContain, Title, Item };
