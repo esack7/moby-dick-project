@@ -16,8 +16,8 @@ module.exports = filterArray => textFileReader(path)
       Words: {}
     };
     let hold = [];
-    buff.map(idx => {
-      let char = idx;
+    buff.map(ele => {
+      let char = ele;
       if (useful(char)) {
         if (char < 97) {
           char += 32;
@@ -26,19 +26,31 @@ module.exports = filterArray => textFileReader(path)
       }
       if (hold.length > 0 && !useful(char)) {
         const word = Buffer.from(hold).toString();
-        if (!filterArray.includes(word)) {
-          if (!(`${word}` in WordCountObj.Words)) {
+        if (!filterArray.includes(word) && word !== 'll') {
+          if (!(word in WordCountObj.Words)) {
             WordCountObj.WordCount += 1;
-            WordCountObj.Words[`${word}`] = {
+            WordCountObj.Words[word] = {
               count: 1,
             }
           } else {
-            WordCountObj.Words[`${word}`].count += 1;
+            WordCountObj.Words[word].count += 1;
           }
         }
         hold = [];
       }
-      return idx;
+      return ele;
     });
     return WordCountObj;
-  }).then(fox => console.log(fox));
+  })
+  .then(wordCountObj => {
+    const TopOneHundredWords = {};
+    Object.keys(wordCountObj.Words).sort((x, y) => wordCountObj.Words[y].count - wordCountObj.Words[x].count).slice(0, 100)
+      .map(ele => {
+        TopOneHundredWords[ele] = {
+          count: wordCountObj.Words[ele].count
+        }
+        return ele;
+      })
+    return TopOneHundredWords;
+  })
+  .then(finalObject => console.log(finalObject));
