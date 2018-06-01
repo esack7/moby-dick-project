@@ -11,6 +11,10 @@ function useful(buffer) {
 
 module.exports = filterArray => textFileReader(path)
   .then(buff => {
+    const WordCountObj = {
+      WordCount: 0,
+      Words: {}
+    };
     let hold = [];
     buff.map(idx => {
       let char = idx;
@@ -22,10 +26,19 @@ module.exports = filterArray => textFileReader(path)
       }
       if (hold.length > 0 && !useful(char)) {
         const word = Buffer.from(hold).toString();
-        console.log(word);
+        if (!filterArray.includes(word)) {
+          if (!(`${word}` in WordCountObj.Words)) {
+            WordCountObj.WordCount += 1;
+            WordCountObj.Words[`${word}`] = {
+              count: 1,
+            }
+          } else {
+            WordCountObj.Words[`${word}`].count += 1;
+          }
+        }
         hold = [];
       }
       return idx;
     });
-    return filterArray.length;
-  })
+    return WordCountObj;
+  }).then(fox => console.log(fox));
