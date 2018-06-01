@@ -3,10 +3,14 @@ const CleanPlugin = require('clean-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
 const { HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 let plugins = [
   new HotModuleReplacementPlugin(),
   new NamedModulesPlugin(),
+  new WebpackShellPlugin({
+    onBuildStart: ['node index.js']
+  }),
 ];
 let entry = [
   'react-hot-loader/patch',

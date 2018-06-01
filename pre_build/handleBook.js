@@ -1,3 +1,4 @@
+const fs = require('fs');
 const textFileReader = require('./textFileReader');
 
 const path = `${__dirname}/../vendor/mobydick.txt`;
@@ -26,6 +27,7 @@ module.exports = filterArray => textFileReader(path)
       }
       if (hold.length > 0 && !useful(char)) {
         const word = Buffer.from(hold).toString();
+        // the check below "word !== 'll'" is somewhat of a hack, but since it is not a word I removed it from the list of words
         if (!filterArray.includes(word) && word !== 'll') {
           if (!(word in WordCountObj.Words)) {
             WordCountObj.WordCount += 1;
@@ -43,14 +45,23 @@ module.exports = filterArray => textFileReader(path)
     return WordCountObj;
   })
   .then(wordCountObj => {
-    const TopOneHundredWords = {};
+    const TopOneHundredWords = {
+      Words: []
+    };
     Object.keys(wordCountObj.Words).sort((x, y) => wordCountObj.Words[y].count - wordCountObj.Words[x].count).slice(0, 100)
       .map(ele => {
-        TopOneHundredWords[ele] = {
-          count: wordCountObj.Words[ele].count
-        }
+        TopOneHundredWords.Words.push({
+          word: ele,
+          count: wordCountObj.Words[ele].count,
+        })
         return ele;
       })
-    return TopOneHundredWords;
+    return JSON.stringify(TopOneHundredWords);
   })
-  .then(finalObject => console.log(finalObject));
+  .then(finalStringifiedObject => {
+    const savePath = `${__dirname}/../public/js/data/topWords.json`;
+    fs.writeFile(savePath, finalStringifiedObject, (err) => {
+      if (err) throw err;
+      console.log(`JSON file created for build`);
+    })
+  });
