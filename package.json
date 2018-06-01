@@ -1,13 +1,13 @@
 {
   "name": "moby-dick-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "https://esack7.github.io/moby-dick-project/",
   "main": "webpack.config.js",
   "scripts": {
     "deploy": "gh-pages -d public",
     "build": "NODE_ENV=production webpack -p --progress;",
     "watch": "webpack-dev-server --watch",
-    "prebuild": "node index.js",
+    "prebuild": "node ./pre_build/index.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u"
