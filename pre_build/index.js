@@ -1,5 +1,5 @@
-const StopWords = require('./pre_build/stopWords');
-const HandleBook = require('./pre_build/handleBook');
+const StopWords = require('./stopWords');
+const HandleBook = require('./handleBook');
 
 const stopWords = new Promise((resolve, reject) => {
   StopWords()

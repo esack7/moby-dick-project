@@ -9,7 +9,7 @@ let plugins = [
   new HotModuleReplacementPlugin(),
   new NamedModulesPlugin(),
   new WebpackShellPlugin({
-    onBuildStart: ['node index.js']
+    onBuildStart: ['node ./pre_build/index.js']
   }),
 ];
 let entry = [
