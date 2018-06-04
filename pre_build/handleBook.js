@@ -1,8 +1,6 @@
 const fs = require('fs');
 const textFileReader = require('./textFileReader');
 
-const path = `${__dirname}/../vendor/mobydick.txt`;
-
 function useful(buffer) {
   if (buffer > 64 && buffer < 123 && !(buffer > 90 && buffer < 97)) {
     return true;
@@ -10,7 +8,7 @@ function useful(buffer) {
   return false;
 }
 
-module.exports = filterArray => textFileReader(path)
+module.exports = (filterArray, book) => textFileReader(book)
   .then(buff => {
     const WordCountObj = {
       WordCount: 0,
