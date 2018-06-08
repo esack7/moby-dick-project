@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid/v4'
 import { Title, Item, Container, WordRow, HeadRow, Image } from '../style/styles';
-import TopWords from '../data/topWords.json'
+import TopWords from '../topWords.json'
 
 const App = () => (
   <div>

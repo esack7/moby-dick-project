@@ -59,7 +59,7 @@ module.exports = filterArray => textFileReader(path)
     return JSON.stringify(TopOneHundredWords);
   })
   .then(finalStringifiedObject => {
-    const savePath = `${__dirname}/../public/js/data/topWords.json`;
+    const savePath = `${__dirname}/../public/js/topWords.json`;
     fs.writeFile(savePath, finalStringifiedObject, (err) => {
       if (err) throw err;
       console.log(`JSON file created for build`);
