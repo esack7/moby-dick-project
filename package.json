@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
     "babel-jest": "^23.2.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-dynamic-import-node": "^2.0.0",

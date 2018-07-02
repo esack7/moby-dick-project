@@ -3,4 +3,4 @@ module.exports = function useful(buffer) {
     return true;
   }
   return false;
-}
+};

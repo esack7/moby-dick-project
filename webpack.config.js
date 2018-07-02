@@ -9,7 +9,7 @@ let plugins = [
   new HotModuleReplacementPlugin(),
   new NamedModulesPlugin(),
   new WebpackShellPlugin({
-    onBuildStart: ['node ./pre_build/index.js']
+    onBuildStart: ['node ./pre_build/index.js'],
   }),
 ];
 
@@ -17,7 +17,7 @@ let entry = [
   'react-hot-loader/patch',
   'webpack-dev-server/client?http://localhost:8080',
   'webpack/hot/only-dev-server',
-  './public/js/ClientApp.jsx'
+  './public/js/ClientApp.jsx',
 ];
 
 let mode = 'development';
@@ -37,20 +37,20 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: production ? 'build.js' : 'bundle.js',
-    publicPath: '/public/'
+    publicPath: '/public/',
   },
   devServer: {
     hot: true,
     publicPath: '/public/',
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx', 'json']
+    extensions: ['.js', '.jsx', 'json'],
   },
   stats: {
     colors: true,
     reasons: true,
-    chunks: true
+    chunks: true,
   },
   module: {
     rules: [
@@ -58,12 +58,12 @@ module.exports = {
         enforce: 'pre',
         test: /\.jsx?$/,
         loader: 'eslint-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
-      }
-    ]
-  }
+        loader: 'babel-loader',
+      },
+    ],
+  },
 };
