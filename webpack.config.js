@@ -12,6 +12,7 @@ let plugins = [
     onBuildStart: ['node ./pre_build/index.js']
   }),
 ];
+
 let entry = [
   'react-hot-loader/patch',
   'webpack-dev-server/client?http://localhost:8080',
@@ -19,12 +20,16 @@ let entry = [
   './public/js/ClientApp.jsx'
 ];
 
+let mode = 'development';
+
 if (production) {
   plugins = plugins.concat([new CleanPlugin(), new UglifyPlugin()]);
   entry = './public/js/ClientApp.jsx';
+  mode = 'production';
 }
 
 module.exports = {
+  mode,
   plugins,
   context: __dirname,
   entry,
