@@ -1,14 +1,8 @@
 const fs = require('fs');
 const textFileReader = require('./textFileReader');
+const useful = require('./usefulChar')
 
 const path = `${__dirname}/../vendor/mobydick.txt`;
-
-function useful(buffer) {
-  if (buffer > 64 && buffer < 123 && !(buffer > 90 && buffer < 97)) {
-    return true;
-  }
-  return false;
-}
 
 module.exports = filterArray => textFileReader(path)
   .then(buff => {
