@@ -2,7 +2,7 @@ const useful = require('./usefulChar');
 
 module.exports = (buffer, filterArray) => {
   const WordCountObj = {
-    WordCount: 0,
+    WordCount: 0, // this isn't necessary, but may be useful information to display later
     Words: {},
   };
   const { Words } = WordCountObj;
@@ -17,7 +17,7 @@ module.exports = (buffer, filterArray) => {
     }
     if (
       (hold.length > 0 && !useful(char)) ||
-      (hold.length > 0 && buffer[idx + 1] === undefined)
+      (hold.length > 0 && buffer[idx + 1] === undefined) // this check is only necessary to account for the final word.
     ) {
       const word = Buffer.from(hold).toString();
       // the check below "word !== 'll'" is somewhat of a hack, but since it is not a word I removed it from the list of words

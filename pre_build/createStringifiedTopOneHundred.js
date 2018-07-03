@@ -2,13 +2,14 @@ module.exports = wordCountObj => {
   const TopOneHundredWords = {
     Words: [],
   };
-  Object.keys(wordCountObj.Words)
-    .sort((x, y) => wordCountObj.Words[y].count - wordCountObj.Words[x].count)
+  const { Words } = wordCountObj;
+  Object.keys(Words)
+    .sort((x, y) => Words[y].count - Words[x].count)
     .slice(0, 100)
     .map(ele => {
       TopOneHundredWords.Words.push({
         word: ele,
-        count: wordCountObj.Words[ele].count,
+        count: Words[ele].count,
       });
       return ele;
     });
