@@ -29,6 +29,7 @@
     "babel-register": "6.26.0",
     "bluebird": "^3.5.1",
     "clean-webpack-plugin": "^0.1.19",
+    "faker": "^4.1.0",
     "prop-types": "15.6.2",
     "react": "16.4.1",
     "react-addons-perf": "15.4.2",
