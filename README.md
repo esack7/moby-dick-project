@@ -18,6 +18,8 @@ You are required to have ```Node.js``` running on your machine for this project 
 ## Running Development and Production Builds:
 Run project in dev mode: ```$ npm run watch```
 
+Run project test suite: ```$ npm run test```
+
 Run node pre-build scripts: ```$ npm run prebuild```
 
 Run production build: ```$ npm run build```
